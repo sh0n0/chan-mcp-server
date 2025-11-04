@@ -1,5 +1,5 @@
 {
-	"name": "4chan-mcp-server",
+	"name": "chan-mcp-server",
 	"version": "0.1.0",
 	"description": "mcp server for 4chan",
 	"scripts": {
