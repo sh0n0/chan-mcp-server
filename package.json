@@ -3,9 +3,10 @@
 	"version": "0.1.0",
 	"description": "mcp server for 4chan",
 	"scripts": {
-		"format": "biome check --write"
+		"format": "biome check --write",
+		"build": "tsc && chmod 755 dist/index.js"
 	},
-	"main": "index.js",
+	"main": "dist/index.js",
 	"keywords": [],
 	"author": "sh0n0",
 	"license": "MIT",
