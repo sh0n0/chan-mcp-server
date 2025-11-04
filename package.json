@@ -1,18 +1,22 @@
 {
-  "name": "4chan-mcp-server",
-  "version": "0.1.0",
-  "description": "mcp server for 4chan",
-  "main": "index.js",
-  "keywords": [],
-  "author": "sh0n0",
-  "license": "MIT",
-  "packageManager": "pnpm@10.20.0",
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.21.0",
-    "zod": "^4.1.12"
-  },
-  "devDependencies": {
-    "@types/node": "^24.10.0",
-    "typescript": "^5.9.3"
-  }
+	"name": "4chan-mcp-server",
+	"version": "0.1.0",
+	"description": "mcp server for 4chan",
+	"scripts": {
+		"format": "biome check --write"
+	},
+	"main": "index.js",
+	"keywords": [],
+	"author": "sh0n0",
+	"license": "MIT",
+	"packageManager": "pnpm@10.20.0",
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.21.0",
+		"zod": "^4.1.12"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.3",
+		"@types/node": "^24.10.0",
+		"typescript": "^5.9.3"
+	}
 }
