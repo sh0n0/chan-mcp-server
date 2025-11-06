@@ -66,7 +66,7 @@ server.tool(
 async function main() {
 	const transport = new StdioServerTransport();
 	await server.connect(transport);
-	console.log("4chan MCP Server running on stdio");
+	console.error("4chan MCP Server running on stdio");
 }
 
 main().catch((error) => {
