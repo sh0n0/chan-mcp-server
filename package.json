@@ -1,16 +1,12 @@
 {
 	"name": "chan-mcp-server",
+	"description": "An unofficial MCP server for 4chan",
 	"version": "0.1.0",
-	"description": "mcp server for 4chan",
-	"scripts": {
-		"format": "biome check --write",
-		"build": "tsc && chmod 755 dist/index.js"
-	},
-	"main": "dist/index.js",
-	"keywords": [],
 	"author": "sh0n0",
-	"license": "MIT",
-	"packageManager": "pnpm@10.20.0",
+	"bin": "dist/index.js",
+	"bugs": {
+		"url": "https://github.com/sh0n0/chan-mcp-server/issues"
+	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.21.0",
 		"html-to-text": "^9.0.5",
@@ -20,6 +16,27 @@
 		"@biomejs/biome": "2.3.3",
 		"@types/html-to-text": "^9.0.4",
 		"@types/node": "^24.10.0",
+		"shx": "^0.4.0",
 		"typescript": "^5.9.3"
-	}
+	},
+	"files": [
+		"dist"
+	],
+	"homepage": "https://github.com/sh0n0/chan-mcp-server",
+	"keywords": [
+		"4chan",
+		"mcp"
+	],
+	"license": "MIT",
+	"main": "dist/index.js",
+	"packageManager": "pnpm@10.20.0",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/sh0n0/chan-mcp-server.git"
+	},
+	"scripts": {
+		"build": "tsc && shx chmod +x dist/*.js",
+		"format": "biome check --write"
+	},
+	"type": "module"
 }
