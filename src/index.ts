@@ -1,6 +1,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { fetchBoards } from "./api";
+import { htmlToText } from "html-to-text";
+import { z } from "zod";
+import { fetchBoards, fetchThreads } from "./api";
 
 const server = new McpServer({
 	name: "4chan MCP Server",
@@ -27,6 +29,39 @@ server.tool("fetchBoards", "Fetch list of 4chan boards", async () => {
 		],
 	};
 });
+
+server.tool(
+	"fetchThreads",
+	"Fetch threads from a 4chan board",
+	{
+		board: z
+			.string()
+			.describe("The board to fetch threads from, e.g., 'g' for /g/"),
+	},
+	async ({ board }) => {
+		if (!board) {
+			throw new Error("Parameter 'board' is required");
+		}
+
+		const threads = await fetchThreads(board);
+
+		const formattedThreads = threads
+			.map(
+				(thread) =>
+					`No.${thread.no} - ${thread.sub ?? "(no subject)"}\n${htmlToText(thread.com ?? "(no comment)")}`,
+			)
+			.join("\n\n");
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Fetched ${threads.length} threads from /${board}/:\n\n${formattedThreads}`,
+				},
+			],
+		};
+	},
+);
 
 async function main() {
 	const transport = new StdioServerTransport();
