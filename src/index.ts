@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { htmlToText } from "html-to-text";
 import { z } from "zod";
-import { fetchBoards, fetchThreads } from "./api";
+import { fetchBoards, fetchPosts, fetchThreads } from "./api";
 
 const server = new McpServer({
 	name: "4chan MCP Server",
@@ -57,6 +57,38 @@ server.tool(
 				{
 					type: "text",
 					text: `Fetched ${threads.length} threads from /${board}/:\n\n${formattedThreads}`,
+				},
+			],
+		};
+	},
+);
+
+server.tool(
+	"fetchPosts",
+	"Fetch posts from a 4chan thread",
+	{
+		board: z.string().describe("The board the thread is on, e.g., 'g' for /g/"),
+		threadNo: z.number().describe("The thread number to fetch posts from"),
+	},
+	async ({ board, threadNo }) => {
+		if (!board) {
+			throw new Error("Parameter 'board' is required");
+		}
+		if (!threadNo) {
+			throw new Error("Parameter 'threadNo' is required");
+		}
+
+		const posts = await fetchPosts(board, threadNo);
+
+		const formattedPosts = posts
+			.map((post) => `No.${post.no}\n${htmlToText(post.com ?? "(no comment)")}`)
+			.join("\n\n");
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Fetched ${posts.length} posts from thread No.${threadNo} on /${board}/:\n\n${formattedPosts}`,
 				},
 			],
 		};

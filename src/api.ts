@@ -9,6 +9,11 @@ interface Thread {
 	com?: string;
 }
 
+interface Post {
+	no: number;
+	com?: string;
+}
+
 interface CatalogPage {
 	page: number;
 	threads: Thread[];
@@ -38,4 +43,17 @@ async function fetchThreads(board: string) {
 	return threads;
 }
 
-export { fetchBoards, fetchThreads };
+async function fetchPosts(board: string, threadNo: number) {
+	const response = await fetch(
+		`https://a.4cdn.org/${board}/thread/${threadNo}.json`,
+	);
+	if (!response.ok) {
+		throw new Error(
+			`Failed to fetch posts for thread No.${threadNo} on board ${board}: ${response.status} ${response.statusText}`,
+		);
+	}
+	const data = await response.json();
+	return data.posts as Post[];
+}
+
+export { fetchBoards, fetchThreads, fetchPosts };
