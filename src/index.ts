@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { htmlToText } from "html-to-text";
 import { z } from "zod";
-import { fetchBoards, fetchPosts, fetchThreads } from "./api";
+import { fetchBoards, fetchPosts, fetchThreads } from "./api.js";
 
 const server = new McpServer({
 	name: "4chan MCP Server",
