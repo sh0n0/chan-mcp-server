@@ -4,6 +4,8 @@ on:
   pull_request:
   push:
     branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
     ci:
@@ -32,3 +34,7 @@ jobs:
 
         - name: Build
           run: pnpm run build
+        
+        - name: Publish
+          if: github.event_name == 'release' && github.event.action == 'published'
+          run: pnpm publish

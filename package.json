@@ -31,6 +31,11 @@
 	"license": "MIT",
 	"main": "dist/index.js",
 	"packageManager": "pnpm@10.20.0",
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public",
+		"provenance": true
+	},
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/sh0n0/chan-mcp-server.git"
