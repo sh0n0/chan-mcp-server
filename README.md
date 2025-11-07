@@ -21,7 +21,7 @@ Add to your `claude_desktop_config.json`:
       "command": "npx",
       "args": [
         "-y",
-        "chan-mcp-server",
+        "chan-mcp-server"
       ]
     }
   }
@@ -43,5 +43,5 @@ mise install
 Use [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to debug the server:
 
 ```bash
-npx @modelcontextprotocol/mcp-inspector node dist/index.js
+npx @modelcontextprotocol/inspector node dist/index.js
 ```
