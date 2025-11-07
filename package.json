@@ -17,7 +17,8 @@
 		"@types/html-to-text": "^9.0.4",
 		"@types/node": "^24.10.0",
 		"shx": "^0.4.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.7"
 	},
 	"files": [
 		"dist"
@@ -36,7 +37,8 @@
 	},
 	"scripts": {
 		"build": "tsc && shx chmod +x dist/*.js",
-		"format": "biome check --write"
+		"format": "biome check --write",
+		"lint": "biome ci"
 	},
 	"type": "module"
 }
