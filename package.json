@@ -3,7 +3,9 @@
 	"description": "An unofficial MCP server for 4chan",
 	"version": "0.1.0",
 	"author": "sh0n0",
-	"bin": "dist/index.js",
+	"bin": {
+		"chan-mcp-server": "dist/index.js"
+	},
 	"bugs": {
 		"url": "https://github.com/sh0n0/chan-mcp-server/issues"
 	},
