@@ -1,7 +1,7 @@
 {
 	"name": "chan-mcp-server",
 	"description": "An unofficial MCP server for 4chan",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": "sh0n0",
 	"bin": {
 		"chan-mcp-server": "dist/index.js"
